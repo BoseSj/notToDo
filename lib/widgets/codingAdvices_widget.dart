@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'box.dart';
+import 'box_widget.dart';
 
 class CodingAdvices extends StatelessWidget {
   const CodingAdvices({super.key});
