@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'codingAdvices.dart';
-
 
 void main() {
   runApp(const RootWidget());
@@ -12,49 +10,25 @@ class RootWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Whats not to do!!",
+      title: "Root Widget",
       theme: ThemeData(
-        useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.greenAccent,
-          brightness: Brightness.dark,
+          seedColor: Colors.teal,
+          brightness: .dark,
         ),
       ),
-      home: HomeWidget(title: "Whats not to do!!"),
-    );
-  }
-}
-
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<HomeWidget> createState() => _HomeWidgetState();
-}
-
-class _HomeWidgetState extends State<HomeWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Not to DO!", style: TextStyle(fontWeight: .w500)),
         ),
-        backgroundColor: Colors.blue,
-      ),
-      body: Stack(
-        children: [
-          Image.asset(
-            "assets/images/homeBG.avif",
-            height: .infinity,
-            fit: .cover,
-          ),
-          CodingAdvices(),
-        ],
+        bottomNavigationBar: NavigationBar(
+          destinations: [
+            NavigationDestination(icon: Icon(Icons.feed), label: "Feed"),
+            NavigationDestination(icon: Icon(Icons.people), label: "Following"),
+            NavigationDestination(icon: Icon(Icons.person), label: "Profile"),
+          ],
+        ),
       ),
     );
   }

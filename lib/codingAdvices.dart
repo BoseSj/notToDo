@@ -22,6 +22,8 @@ class CodingAdvices extends StatelessWidget {
                 TextPlate(title: "Do everything synchronusly!"),
                 TextPlate(title: "Write everything twice!"),
                 TextPlate(title: "Massive ViewModel is the answer!"),
+                TextPlate(title: "Dont write test cases!"),
+                TextPlate(title: "Dont maintain your code!"),
               ],
             ),
             Row(
