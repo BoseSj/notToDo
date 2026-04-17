@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:not_todo/view/pages/Dashboard/dashboard.dart';
+import 'package:not_todo/view/viewmodels/dashboard_viewmodel.dart';
 import 'package:not_todo/view/widgets/homeNavBar.dart';
 // import 'package:not_todo/view/pages/home_tree.dart';
 
@@ -12,20 +13,25 @@ class RootWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Root Widget",
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
-          brightness: .dark,
-        ),
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Not to DO!")),
-        body: Dashboard(),
-        bottomNavigationBar: HomeNavBar(),
-      ),
+    return ListenableBuilder(
+      listenable: dashboardViewModel,
+      builder: (context, child) {
+        return MaterialApp(
+          title: "Root Widget",
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.teal,
+              brightness: dashboardViewModel.selectedPageBrightness,
+            ),
+          ),
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            appBar: AppBar(title: const Text("Not to DO!")),
+            body: Dashboard(),
+            bottomNavigationBar: HomeNavBar(),
+          ),
+        );
+      },
     );
   }
 }
