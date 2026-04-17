@@ -10,3 +10,5 @@ class DashboardViewModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+final dashboardViewModel = DashboardViewModel();
