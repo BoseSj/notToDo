@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:not_todo/view/pages/Dashboard/dashboard_tree.dart';
+import 'package:not_todo/view/trees/dashboard_tree.dart';
 import 'package:not_todo/view/viewmodels/dashboard_viewmodel.dart';
 
 
