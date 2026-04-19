@@ -21,12 +21,22 @@ class RootWidget extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.teal,
-              brightness: dashboardViewModel.selectedPageBrightness,
+              brightness: dashboardViewModel.selectedBrightness,
             ),
           ),
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            appBar: AppBar(title: const Text("Not to DO!")),
+            appBar: AppBar(
+              title: const Text("Not to DO!"),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    dashboardViewModel.toggleBrightness();
+                  },
+                  icon: dashboardViewModel.bightnessIcon,
+                ),
+              ],
+            ),
             body: Dashboard(),
             bottomNavigationBar: HomeNavBar(),
           ),
