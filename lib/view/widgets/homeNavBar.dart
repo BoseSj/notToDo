@@ -16,8 +16,7 @@ class HomeNavBar extends StatelessWidget {
           },
           destinations: const [
             NavigationDestination(icon: Icon(Icons.feed), label: "Feed"),
-            NavigationDestination(icon: Icon(Icons.people), label: "Following"),
-            NavigationDestination(icon: Icon(Icons.person), label: "Profile"),
+            NavigationDestination(icon: Icon(Icons.people), label: "Following")
           ],
         );
       },

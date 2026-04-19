@@ -6,7 +6,7 @@ class DashboardViewModel extends ChangeNotifier {
 
   int get selectedPageIndex => _selectedPageIndex;
   Brightness get selectedBrightness => _selectedBrightness;
-  Brightness _selectedBrightness = .light;
+  Brightness _selectedBrightness = .dark;
 
   void toggleBrightness() {
     _selectedBrightness = _selectedBrightness == .dark ? .light : .dark;
