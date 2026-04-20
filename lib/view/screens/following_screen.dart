@@ -20,6 +20,8 @@ class _FollowingScreenState extends State<FollowingScreen> {
           children: [
             Slider(
               divisions: 10,
+              activeColor: Colors.amber,
+              thumbColor: Colors.amber,
               value: engagement,
               onChanged: (value) {
                 setState(() {
