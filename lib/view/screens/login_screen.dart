@@ -19,18 +19,35 @@ class _LogInScreenState extends State<LogInScreen> {
     return FilledButton(
       onPressed: () {
         if (userID.value.text.isEmpty) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text("Enter name"),
-            ),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("Enter name")));
           return;
         }
         if (password.value.text.isEmpty) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text("Enter password"),
-            ),
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                icon: Icon(Icons.key),
+                content: Text("Please enter password to proceed"),
+                actionsAlignment: .spaceEvenly,
+                actions: [
+                  OutlinedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Cancel"),
+                  ),
+                  FilledButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Okay"),
+                  ),
+                ],
+              );
+            },
           );
           return;
         }
@@ -81,7 +98,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   },
                 ),
                 DropdownButtonFormField(
-                  hint: Text("Selec account type"),
+                  hint: Text("Select account type"),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.settings),
                     border: OutlineInputBorder(
