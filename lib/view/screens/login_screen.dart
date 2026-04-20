@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:not_todo/view/screens/dashboard_screen.dart';
-
+import 'package:not_todo/coordinator/coordinator.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -89,14 +88,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 ),
                 FilledButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return DashboardScreen();
-                        },
-                      ),
-                    );
+                    Coordinator(context: context).login();
                   },
                   child: const Text("Log In"),
                 ),
