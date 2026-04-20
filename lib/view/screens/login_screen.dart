@@ -15,6 +15,31 @@ class _LogInScreenState extends State<LogInScreen> {
   bool? isGuestMode = false;
   bool rememberMe = false;
 
+  FilledButton logInButton({required BuildContext context}) {
+    return FilledButton(
+      onPressed: () {
+        if (userID.value.text.isEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Enter name"),
+            ),
+          );
+          return;
+        }
+        if (password.value.text.isEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Enter password"),
+            ),
+          );
+          return;
+        }
+        Coordinator(context: context).login();
+      },
+      child: const Text("Log In"),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,14 +52,7 @@ class _LogInScreenState extends State<LogInScreen> {
               mainAxisSize: .min,
               spacing: 12,
               children: [
-                InkWell(
-                  borderRadius: BorderRadius.circular(40),
-                  splashColor: Colors.cyan,
-                  onTap: () {
-                    print("Tapped the well");
-                  },
-                  child: Icon(Icons.person_rounded, size: 178),
-                ),
+                Icon(Icons.person_rounded, size: 178),
                 TextField(
                   controller: userID,
                   decoration: InputDecoration(
@@ -63,6 +81,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   },
                 ),
                 DropdownButtonFormField(
+                  hint: Text("Selec account type"),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.settings),
                     border: OutlineInputBorder(
@@ -86,12 +105,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     });
                   },
                 ),
-                FilledButton(
-                  onPressed: () {
-                    Coordinator(context: context).login();
-                  },
-                  child: const Text("Log In"),
-                ),
+                logInButton(context: context),
               ],
             ),
           ),
