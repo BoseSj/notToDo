@@ -7,7 +7,9 @@ class Coordinator {
   final BuildContext context;
 
   Coordinator({required this.context});
+}
 
+extension Auth on Coordinator {
   void login() {
     Navigator.pushReplacement(
       context,
@@ -19,6 +21,19 @@ class Coordinator {
     );
   }
 
+  void logout() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return LogInScreen();
+        },
+      ),
+    );
+  }
+}
+
+extension App on Coordinator {
   void profile() {
     Navigator.push(
       context,
@@ -37,17 +52,6 @@ class Coordinator {
             ),
             body: ProfileScreen(),
           );
-        },
-      ),
-    );
-  }
-
-  void logout() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return LogInScreen();
         },
       ),
     );

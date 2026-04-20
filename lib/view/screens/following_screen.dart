@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:not_todo/view/widgets/hero_widget.dart';
 
 class FollowingScreen extends StatefulWidget {
   const FollowingScreen({super.key});
@@ -18,6 +19,15 @@ class _FollowingScreenState extends State<FollowingScreen> {
         child: Column(
           mainAxisSize: .min,
           children: [
+            Container(
+              height: 500,
+              width: .infinity,
+              padding: EdgeInsets.all(25),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(.circular(20)),
+                child: HeroImage(),
+              ),
+            ),
             Slider(
               divisions: 10,
               activeColor: Colors.amber,
@@ -29,7 +39,9 @@ class _FollowingScreenState extends State<FollowingScreen> {
                 });
               },
             ),
-            Text("Increase Engagement > ${((engagement*100).round() / 100)*100}%"),
+            Text(
+              "Increase Engagement > ${((engagement * 100).round() / 100) * 100}%",
+            ),
           ],
         ),
       ),
